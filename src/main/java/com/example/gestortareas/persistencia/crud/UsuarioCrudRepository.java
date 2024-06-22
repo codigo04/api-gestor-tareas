@@ -10,12 +10,9 @@ public interface UsuarioCrudRepository extends CrudRepository<Usuario,Integer> {
 
 
 
-
-
-
     public Usuario findUsuarioByIdUsuario(int idUsuario);
 
-    public void getUsuarioByIdUsuario(int idUsuario);
+
 
 
 
