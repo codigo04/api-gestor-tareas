@@ -3,12 +3,14 @@ package com.example.gestortareas.persistencia.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "Tareas")
 public class Tarea {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tarea")
@@ -18,14 +20,16 @@ public class Tarea {
     private  String descripcion;
 
     @Column(name = "fecha_creacion")
-    private  Date  fechaCreacion;
+    private LocalDateTime fechaCreacion;
 
 
     @Column(name = "fecha_vencimiento")
     private  Date fechaVencimiento;
 
-    private  String prioridad = "Media";// Enumeración de 'Alta', 'Media' o 'Baja'
-    private String estado ="Pendiente"; // Enumeración de 'Pendiente', 'En Proceso', 'Completada' o 'Cancelada'
+
+    private  String prioridad;// Enumeración de 'Alta', 'Media' o 'Baja'}
+
+    private String estado ;// Enumeración de 'Pendiente', 'En Proceso', 'Completada' o 'Cancelada'
 
     @Column(name = "id_proyecto")
     private Integer idProyecto;
@@ -43,6 +47,7 @@ public class Tarea {
     @ManyToOne
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
+
 
 
     public Integer getIdTarea() {
@@ -69,11 +74,11 @@ public class Tarea {
         this.descripcion = descripcion;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -91,14 +96,6 @@ public class Tarea {
 
     public void setPrioridad(String prioridad) {
         this.prioridad = prioridad;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public Integer getIdProyecto() {

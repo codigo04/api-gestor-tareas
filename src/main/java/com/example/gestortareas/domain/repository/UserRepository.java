@@ -20,11 +20,11 @@ public interface UserRepository {
 
 
     //crear user
-
     public  User createUser(User user);
+
     //eliminar user
     public void deleteUser(int userId);
 
     //actualizar user
-    public  User updateUser(int userId, User user);
+    public  User updateUser(User user);
 }

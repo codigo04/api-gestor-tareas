@@ -54,14 +54,9 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public User updateUser(int userId, User user) {
-        Optional<Usuario> optionalUsuario = usuarioCrudRepository.findById(userId);
+    public User updateUser( User user) {
 
-        Usuario userExiste = optionalUsuario.get();
-
-        userExiste.setCorreo(user.getGmail());
-
-        userExiste.setContraseña(user.getPassword());
+        Usuario userExiste = mapper.toUsuario(user);
 
         return mapper.toUser(usuarioCrudRepository.save(userExiste));
 

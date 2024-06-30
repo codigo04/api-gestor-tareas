@@ -2,6 +2,7 @@ package com.example.gestortareas.persistencia.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -16,7 +17,7 @@ public class Comentario {
      String comentario;
 
      @Column(name = "fecha_comentario")
-     Date fechaComentario;
+     LocalDateTime fechaComentario;
 
      @Column(name = "id_tarea")
      Integer idTarea;
@@ -49,11 +50,11 @@ public class Comentario {
         this.comentario = comentario;
     }
 
-    public Date getFechaComentario() {
+    public LocalDateTime getFechaComentario() {
         return fechaComentario;
     }
 
-    public void setFechaComentario(Date fechaComentario) {
+    public void setFechaComentario(LocalDateTime fechaComentario) {
         this.fechaComentario = fechaComentario;
     }
 

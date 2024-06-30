@@ -2,17 +2,18 @@ package com.example.gestortareas.domain;
 
 import java.time.LocalDateTime;
 
-public class Projects {
+public class Project {
 
     int projectId;
+    String name;
     String description;
-    int estate;
     LocalDateTime startDate;
     LocalDateTime endDate;
+    int estate;
     int userId;
-    String name;
 
-    User  user;
+
+
 
     public int getProjectId() {
         return projectId;
@@ -70,11 +71,5 @@ public class Projects {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

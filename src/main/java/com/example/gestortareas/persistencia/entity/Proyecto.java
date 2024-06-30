@@ -21,12 +21,12 @@ public class Proyecto {
     private String descripcion;
 
     @Column(name = "fecha_inicio")
-    private Date fecha_inicio;
+    private Date fechaInicio;
 
     @Column(name = "fecha_fin")
     private  Date fechaFin;
 
-    private String estado = "Activo";
+    private Integer estado = 1;
 
     @Column(name = "id_usuario")
     private Integer idUsuario;
@@ -62,12 +62,12 @@ public class Proyecto {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha_inicio() {
-        return fecha_inicio;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
     public Date getFechaFin() {
@@ -79,11 +79,11 @@ public class Proyecto {
         this.fechaFin = fechaFin;
     }
 
-    public String getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 

@@ -16,8 +16,6 @@ public interface UserMapper {
             @Mapping(source = "contraseña",target = "password"),
             @Mapping(source = "correo",target = "gmail"),
             @Mapping(source = "fechaRegistro",target = "dateRegustration"),
-
-
     })
 
     User toUser(Usuario usuario);
