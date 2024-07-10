@@ -29,6 +29,7 @@ public class Tarea {
 
     private  String prioridad;// Enumeración de 'Alta', 'Media' o 'Baja'}
 
+
     private String estado ;// Enumeración de 'Pendiente', 'En Proceso', 'Completada' o 'Cancelada'
 
     @Column(name = "id_proyecto")
@@ -112,5 +113,37 @@ public class Tarea {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

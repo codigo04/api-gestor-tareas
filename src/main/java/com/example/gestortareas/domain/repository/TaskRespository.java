@@ -1,6 +1,7 @@
 package com.example.gestortareas.domain.repository;
 
 import com.example.gestortareas.domain.Task;
+import com.example.gestortareas.persistencia.entity.Tarea;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,11 +27,17 @@ public interface TaskRespository {
     //buscar tarea
     Optional<Task> getTask(int taskId);
 
+    //buscar Tarea por id usuario
+    Optional<List<Task>> getTaskIdUsuario(int idUser);
+
     //actualizar
     Task updateTask(Task task);
 
     //eliminar
     void deleteTask(int taskId);
+
+
+
 
 
 

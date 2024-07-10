@@ -1,7 +1,7 @@
 package com.example.gestortareas.domain.Enum;
 
 public enum Estate {
-    pediente,
+    PENDIENTE,
     EN_PROCESO,
     COMPLETA
 

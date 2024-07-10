@@ -1,4 +1,4 @@
-package com.example.gestortareas.persistencia.repository;
+package com.example.gestortareas.persistencia.repositorio;
 
 import com.example.gestortareas.domain.Project;
 import com.example.gestortareas.domain.repository.ProjectRepository;

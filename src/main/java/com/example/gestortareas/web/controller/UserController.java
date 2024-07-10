@@ -65,6 +65,7 @@ public class UserController {
     }
 
 
+
     //actualizar
     @PutMapping("/v1/update/{id}")
     public User updateUser(@PathVariable("id") int id, @RequestBody User user) {

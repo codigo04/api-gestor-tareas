@@ -3,11 +3,10 @@ package com.example.gestortareas.domain;
 import java.time.LocalDateTime;
 
 public class Comment {
-    int commentId;
-    String comment;
-    LocalDateTime dateComment;
-    int idTask; //idTarea
-    int userId;
+    private int commentId;
+    private String comment;
+    private LocalDateTime dateComment;
+    private int taskId;
 
     public int getCommentId() {
         return commentId;
@@ -33,19 +32,12 @@ public class Comment {
         this.dateComment = dateComment;
     }
 
-    public int getIdTask() {
-        return idTask;
+
+    public int getTaskId() {
+        return taskId;
     }
 
-    public void setIdTask(int idTask) {
-        this.idTask = idTask;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
     }
 }

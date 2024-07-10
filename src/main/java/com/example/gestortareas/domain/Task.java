@@ -2,23 +2,29 @@ package com.example.gestortareas.domain;
 
 import com.example.gestortareas.domain.Enum.Estate;
 import com.example.gestortareas.domain.Enum.Priority;
+import com.example.gestortareas.persistencia.entity.Comentario;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Task {
 
     private int taskId;
     private String title;
-    private  String description;
+    private String description;
     private LocalDateTime dateCreation;
-    private  LocalDateTime dateExperition;
+    private LocalDateTime dateExperition;
+    private int projectId;
+    private int userId;
+    List<Comment> comments;
 
     @Enumerated(EnumType.STRING)
     private Priority priority ;
+
     @Enumerated(EnumType.STRING)
-    private Estate estate = Estate.pediente;
+    private Estate estate = Estate.PENDIENTE;
 
 
     public int getTaskId() {
@@ -75,5 +81,28 @@ public class Task {
 
     public void setEstate(Estate estate) {
         this.estate = estate;
+    }
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

@@ -1,11 +1,10 @@
-package com.example.gestortareas.persistencia.repository;
+package com.example.gestortareas.persistencia.repositorio;
 
 import com.example.gestortareas.domain.User;
 import com.example.gestortareas.domain.repository.UserRepository;
 import com.example.gestortareas.persistencia.crud.UsuarioCrudRepository;
 import com.example.gestortareas.persistencia.entity.Usuario;
 import com.example.gestortareas.persistencia.mapper.UserMapper;
-import com.example.gestortareas.persistencia.mapper.UserMapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

@@ -8,29 +8,29 @@ import java.util.Date;
 @Entity
 @Table(name = "Comentarios")
 public class Comentario {
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "id_comentario")
-     Integer idComentario;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_comentario")
+    Integer idComentario;
 
 
-     String comentario;
+    String comentario;
 
-     @Column(name = "fecha_comentario")
-     LocalDateTime fechaComentario;
+    @Column(name = "fecha_comentario")
+    LocalDateTime fechaComentario;
 
-     @Column(name = "id_tarea")
-     Integer idTarea;
+    @Column(name = "id_tarea")
+    Integer idTarea;
 
     @Column(name = "id_usuario")
     Integer idUsuario;
 
-   @ManyToOne
-   @JoinColumn(name ="id_comentario",insertable = false, updatable = false)
-   private Tarea tareaC;   //relacion tareas comentarios
+    @ManyToOne
+    @JoinColumn(name = "id_comentario", insertable = false, updatable = false)
+    private Tarea tareaC;   //relacion tareas comentarios
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario",insertable = false, updatable = false)
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;  //relacion usuario comentario
 
 
@@ -75,5 +75,11 @@ public class Comentario {
 
     }
 
+    public Tarea getTareaC() {
+        return tareaC;
+    }
 
+    public void setTareaC(Tarea tareaC) {
+        this.tareaC = tareaC;
+    }
 }
