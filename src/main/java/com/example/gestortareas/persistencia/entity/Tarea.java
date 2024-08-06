@@ -38,7 +38,7 @@ public class Tarea {
     @Column(name = "id_usuario")
     private Integer idUsuario;
 
-    @OneToMany(mappedBy = "tareaC")
+    @OneToMany(mappedBy = "tareaC",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;  //relacion tareas comentarios
 
     @ManyToOne

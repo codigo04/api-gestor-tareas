@@ -38,7 +38,6 @@ public class UserController {
     @GetMapping("/v1/{id}")
     public ResponseEntity<Optional<User>> getUser(@PathVariable("id") int userId) {
 
-
         if (userService.getUser(userId) == null) {
 
             return ResponseEntity.notFound().build();

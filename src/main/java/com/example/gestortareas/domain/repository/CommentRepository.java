@@ -12,6 +12,7 @@ public interface CommentRepository {
 
     public Optional<Comment> createCommentTask(Comment comment);
 
+    public  Optional<Comment> readComment(int commentId);
 
     public List<Comment> readCommentsTask(int taskId);
 

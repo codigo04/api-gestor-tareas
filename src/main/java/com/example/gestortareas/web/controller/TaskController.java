@@ -17,7 +17,7 @@ public class TaskController {
     TaskService taskService;
 
     @PostMapping("/v1/task/create")
-    public Task createProject(@RequestBody Task task) {
+    public Task createTask(@RequestBody Task task) {
 
         return taskService.createTask(task);
     }

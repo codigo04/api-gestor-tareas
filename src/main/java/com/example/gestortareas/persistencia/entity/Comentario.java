@@ -72,7 +72,6 @@ public class Comentario {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
-
     }
 
     public Tarea getTareaC() {

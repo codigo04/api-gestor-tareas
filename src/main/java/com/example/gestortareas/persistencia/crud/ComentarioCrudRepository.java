@@ -8,5 +8,11 @@ import java.util.List;
 public interface ComentarioCrudRepository extends CrudRepository<Comentario,Integer> {
 
 
-    List<Comentario> findAllByIdTarea(int tareaId);
+    List<Comentario> findByIdTarea(int tareaId);
+
+     //void deleteByIdTarea(int tareaId);
+
+
+
+
 }

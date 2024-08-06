@@ -23,7 +23,7 @@ public interface TaskMapper {
             @Mapping(source = "estado", target = "estate"),
             @Mapping(source = "idProyecto", target ="projectId" ),
             @Mapping(source = "idUsuario", target ="userId" ),
-            @Mapping(source = "comentarios", target ="comments" )
+
 
     })
     Task toTask(Tarea tarea);

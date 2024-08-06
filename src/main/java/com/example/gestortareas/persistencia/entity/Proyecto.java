@@ -3,8 +3,7 @@ package com.example.gestortareas.persistencia.entity;
 
 import jakarta.persistence.*;
 
-import javax.lang.model.element.Name;
-import java.security.PrivateKey;
+
 import java.util.Date;
 import java.util.List;
 

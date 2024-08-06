@@ -18,7 +18,7 @@ public class Task {
     private LocalDateTime dateExperition;
     private int projectId;
     private int userId;
-    List<Comment> comments;
+
 
     @Enumerated(EnumType.STRING)
     private Priority priority ;
@@ -98,11 +98,5 @@ public class Task {
         this.userId = userId;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
 }

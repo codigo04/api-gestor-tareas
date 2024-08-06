@@ -33,11 +33,23 @@ public class ComentarioRespository implements CommentRepository {
     }
 
     /**
+     * @param commentId
+     * @return
+     */
+    @Override
+    public Optional<Comment> readComment(int commentId) {
+
+        Optional<Comentario> comentario =  comentarioCrudRepository.findById(commentId);
+
+        return comentario.map(comenMap -> mapper.toComment(comenMap));
+    }
+
+    /**
      * @return List<Comment>
      */
     @Override
     public List<Comment> readCommentsTask(int taskId) {
-       List<Comment>comentarios =  mapper.toComments(comentarioCrudRepository.findAllByIdTarea(taskId));
+       List<Comment>comentarios =  mapper.toComments(comentarioCrudRepository.findByIdTarea(taskId));
         return comentarios;
     }
 
@@ -45,8 +57,9 @@ public class ComentarioRespository implements CommentRepository {
      *
      */
     @Override
-    public void deleteCommentsTask(int taskId) {
-         comentarioCrudRepository.deleteById(taskId);
+    public void deleteCommentsTask(int commentId) {
+         comentarioCrudRepository.deleteById(commentId);
+
     }
 
     /**
