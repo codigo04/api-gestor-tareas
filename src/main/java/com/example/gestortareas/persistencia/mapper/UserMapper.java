@@ -5,9 +5,10 @@ import com.example.gestortareas.persistencia.entity.Usuario;
 import org.mapstruct.*;
 
 import java.util.List;
+import java.util.Set;
 
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {RoleMapper.class})
 public interface UserMapper {
     @Mappings({
             @Mapping(source = "idUsuario",target = "userId"),
@@ -16,12 +17,14 @@ public interface UserMapper {
             @Mapping(source = "contraseña",target = "password"),
             @Mapping(source = "correo",target = "gmail"),
             @Mapping(source = "fechaRegistro",target = "dateRegustration"),
+            @Mapping(source = "rolesUsuario",target = "roles")
     })
 
     User toUser(Usuario usuario);
     List<User> toUsers(List<Usuario> usuarios);
     @InheritInverseConfiguration
     Usuario toUsuario(User user);
+
 
 
 }

@@ -3,6 +3,8 @@ package com.example.gestortareas.domain.repository;
 
 import com.example.gestortareas.domain.User;
 import com.example.gestortareas.persistencia.entity.Usuario;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,4 +29,8 @@ public interface UserRepository {
 
     //actualizar user
     public  User updateUser(User user);
+
+    public UserDetails getUserEmail(String email);
+
+    public Optional<User> getUserEmailUser(String email);
 }

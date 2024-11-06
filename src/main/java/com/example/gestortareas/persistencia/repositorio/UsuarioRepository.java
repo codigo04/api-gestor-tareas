@@ -1,15 +1,22 @@
 package com.example.gestortareas.persistencia.repositorio;
 
+import com.example.gestortareas.domain.Role;
 import com.example.gestortareas.domain.User;
 import com.example.gestortareas.domain.repository.UserRepository;
+import com.example.gestortareas.persistencia.crud.RolCrudRepository;
 import com.example.gestortareas.persistencia.crud.UsuarioCrudRepository;
+import com.example.gestortareas.persistencia.entity.Rol;
 import com.example.gestortareas.persistencia.entity.Usuario;
+import com.example.gestortareas.persistencia.mapper.RoleMapper;
 import com.example.gestortareas.persistencia.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Repository
@@ -21,6 +28,11 @@ public class UsuarioRepository implements UserRepository {
     @Autowired
     private UserMapper mapper;
 
+    @Autowired
+   RoleMapper roleMapper;
+
+    @Autowired
+    RolCrudRepository rolCrudRepository;
 
     //todo users
     @Override
@@ -40,11 +52,24 @@ public class UsuarioRepository implements UserRepository {
     @Override
     public User createUser(User user) {
 
-        System.out.println(user.getName());
+        Usuario us = new Usuario();
 
-        Usuario usuario = mapper.toUsuario(user);
+        us.setNombre(user.getName());
+        us.setApellido(user.getLastName());
+        us.setCorreo(user.getGmail());
+        us.setContraseña(user.getPassword());
 
-        return mapper.toUser(usuarioCrudRepository.save(usuario));
+        Set<Rol> assginedRoles = new HashSet<>();
+
+        for (Role rolF: user.getRoles()){
+            Rol rol = rolCrudRepository.findByNombreRol(rolF.getNameRole()).orElseThrow(()-> new RuntimeException("EL ROL NO EXISTE REVISA TU BD"));
+            assginedRoles.add(rol);
+        }
+        us.setRolesUsuario(assginedRoles);
+
+
+
+        return mapper.toUser(usuarioCrudRepository.save(us));
     }
 
     @Override
@@ -61,6 +86,31 @@ public class UsuarioRepository implements UserRepository {
 
     }
 
+
+
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public UserDetails getUserEmail(String email) {
+        Optional<Usuario>  usuario =   usuarioCrudRepository.findByCorreo(email);
+
+        return usuario.get();
+    }
+
+    @Override
+    public Optional<User> getUserEmailUser(String email) {
+        Optional<Usuario>  usuario =   usuarioCrudRepository.findByCorreo(email);
+
+        return usuario.map(user->mapper.toUser(user));
+    }
+
+
+    public UserDetails getUserEmailss(String email) {
+        Optional<Usuario>  usuario =   usuarioCrudRepository.findByCorreo(email);
+        return usuario.get();
+    }
 /*
     actualizar usuario
     public Usuario actualizarUsuario(int idUsuario, Usuario usuarioActualizado) {

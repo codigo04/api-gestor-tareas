@@ -2,15 +2,21 @@ package com.example.gestortareas.persistencia.entity;
 
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Entity
 @Table(name = "Usuarios")
-public class Usuario{
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,14 +41,24 @@ public class Usuario{
     @OneToMany(mappedBy = "usuario")
     private List<Tarea> tareas;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_rol"))
+    private Set<Rol> rolesUsuario = new HashSet<>();
 
-    public Usuario(Integer idUsuario, String apellido, String correo, String contraseña, LocalDateTime fechaRegistro, String nombre) {
+
+    public Usuario(Integer idUsuario, String nombre, String apellido, String correo, String contraseña, LocalDateTime fechaRegistro, List<Proyecto> proyectos, List<Comentario> comentarios, List<Tarea> tareas, Set<Rol> rolesUsuario) {
         this.idUsuario = idUsuario;
+        this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
         this.fechaRegistro = fechaRegistro;
-        this.nombre = nombre;
+        this.proyectos = proyectos;
+        this.comentarios = comentarios;
+        this.tareas = tareas;
+        this.rolesUsuario = rolesUsuario;
     }
 
     public Usuario() {
@@ -119,5 +135,71 @@ public class Usuario{
 
     public void setTareas(List<Tarea> tareas) {
         this.tareas = tareas;
+    }
+
+    public Set<Rol> getRolesUsuario() {
+        return rolesUsuario;
+    }
+
+    public void setRolesUsuario(Set<Rol> roles) {
+        this.rolesUsuario = roles;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return rolesUsuario.stream()
+                .map(rol -> new SimpleGrantedAuthority(rol.getNombreRol()))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public String getPassword() {
+        return contraseña;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public String getUsername() {
+        return correo;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

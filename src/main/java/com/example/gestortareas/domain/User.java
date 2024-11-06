@@ -1,8 +1,15 @@
 package com.example.gestortareas.domain;
 
 
+import com.example.gestortareas.persistencia.entity.Rol;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class User {
 
@@ -12,17 +19,35 @@ public class User {
     private String password;
     private String gmail;
     private LocalDateTime dateRegustration;
-
+    private Set<Role> roles = new HashSet<>();
     //private List<Projects> projects;
 
-    public User(int userId, String name, String lastName, String password, String gmail, LocalDateTime dateRegustration) {
+
+    public User( String name) {
+        this.name = name;
+
+
+    }
+
+    public User(int userId, String name, String lastName, String password, String gmail, LocalDateTime dateRegustration, Set<Role> roles) {
         this.userId = userId;
         this.name = name;
         this.lastName = lastName;
         this.password = password;
         this.gmail = gmail;
         this.dateRegustration = dateRegustration;
+        this.roles = roles;
     }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+
 
     public User() {
 
@@ -52,9 +77,13 @@ public class User {
         this.lastName = lastName;
     }
 
+
+
     public String getPassword() {
         return password;
     }
+
+
 
     public void setPassword(String password) {
         this.password = password;

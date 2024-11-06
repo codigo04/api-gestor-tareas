@@ -26,7 +26,7 @@ public class Comentario {
     Integer idUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_comentario", insertable = false, updatable = false)
+
     private Tarea tareaC;   //relacion tareas comentarios
 
     @ManyToOne

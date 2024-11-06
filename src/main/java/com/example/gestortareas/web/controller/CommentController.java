@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/comment")
 public class CommentController {
 
     @Autowired

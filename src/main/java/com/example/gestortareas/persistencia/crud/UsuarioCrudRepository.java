@@ -10,8 +10,9 @@ public interface UsuarioCrudRepository extends CrudRepository<Usuario,Integer> {
 
 
 
-    public Usuario findUsuarioByIdUsuario(int idUsuario);
+     Usuario findUsuarioByIdUsuario(int idUsuario);
 
+     Optional<Usuario> findByCorreo(String correo);
 
 
 
